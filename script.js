@@ -1,3 +1,4 @@
+// script.js (com alterações)
 // Configurações globais
 const CONFIG = {
     duration: 20 * 60 * 60, // 20 horas em segundos
@@ -7,11 +8,35 @@ const CONFIG = {
 // Dados dos bosses
 const BOSSES = {
     solo: [
-        'Yselda', 'Drume', 'Cults Edron', 'Boss Edron', 'Kusuma (Marapur)', 'Cult Dara', 'Bosses Darasha', 'Scarlet', 'Alminha (Port Hope)', 'Asura (Bosses)', 'Ahau', 'Raxias (Shortcut Port Hope)', 'MiniBoss Issavi', 'Tentugly', 'Cults Carlin', 'Cult Thais Mino', 'Cult Thais Mendigo'
+        'Yselda', 'Drume', 'Cults Edron', 'Boss Edron', 'Kusuma (Marapur)', 'Cult Dara', 
+        'Bosses Darasha', 'Scarlet', 'Alminha (Port Hope)', 'Asura (Bosses)', 'Ahau', 
+        'Raxias (Shortcut Port Hope)', 'MiniBoss Issavi', 'Tentugly', 'Cults Carlin', 
+        'Cult Thais Mino', 'Cult Thais Mendigo'
     ],
     tres: ['Oberon', 'Timira', 'Lulu', 'Leiden', 'Faceles', 'Cerebro', 'Mini DC', 'The Monster'],
     cinco: ['GT', 'GD', 'Vengoth', 'Magma'],
     dez: ['Zelos', 'Last DC', 'Last Vengoth', 'WZ 123', 'WZ 456']
+};
+
+// Níveis mínimos para os bosses solo
+const BOSS_LEVELS = {
+    'Yselda': 350,
+    'Drume': 250,
+    'Cults Edron': 500,
+    'Boss Edron': 250,
+    'Kusuma (Marapur)': 250,
+    'Cult Dara': 500,
+    'Bosses Darasha': 250,
+    'Scarlet': 350,
+    'Alminha (Port Hope)': 450,
+    'Asura (Bosses)': 350,
+    'Ahau': 450,
+    'Raxias (Shortcut Port Hope)': 250,
+    'MiniBoss Issavi': 250,
+    'Tentugly': 450,
+    'Cults Carlin': 500,
+    'Cult Thais Mino': 500,
+    'Cult Thais Mendigo': 500
 };
 
 // Estado da aplicação
@@ -19,8 +44,18 @@ const state = {
     timers: {},
     lastActivityTime: Date.now(),
     inactivityWarningTimeout: null,
-    currentUser: localStorage.getItem('currentUser') || null
+    currentUser: localStorage.getItem('currentUser') || null,
+    currentLevelFilter: 600 // Padrão: mostrar todos
 };
+
+function setPodiumGif(gifUrl) {
+    const gifOverlay = document.querySelector('.gif-overlay');
+    if (gifUrl) {
+        gifOverlay.innerHTML = `<img src="${gifUrl}" alt="Boss GIF">`;
+    } else {
+        gifOverlay.innerHTML = '';
+    }
+}
 
 // Funções de manipulação do DOM
 const DOM = {
@@ -51,7 +86,7 @@ const DOM = {
 
 // Funções de timer
 const Timer = {
-    start: (user, bossName, timerEl, btn, remaining = CONFIG.duration) => {
+    start: (user, bossName, timerEl, btn, endTime = null) => {
         // Se já existe um timer para este boss, não crie outro
         if (state.timers[user]?.[bossName]?.interval) {
             return;
@@ -59,26 +94,34 @@ const Timer = {
         
         btn.classList.add('active');
         
+        // Calcula o tempo final baseado no horário atual + duração
+        const now = Math.floor(Date.now() / 1000);
+        const end = endTime || (now + CONFIG.duration);
+        
         const update = () => {
-            const h = String(Math.floor(remaining / 3600)).padStart(2, '0');
-            const m = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
-            const s = String(remaining % 60).padStart(2, '0');
-            timerEl.textContent = `${h}:${m}:${s}`;
-
+            const now = Math.floor(Date.now() / 1000);
+            let remaining = end - now;
+            
             if (remaining <= 0) {
                 Timer.clear(user, bossName, btn, timerEl);
                 delete state.timers[user][bossName];
                 return;
             }
-            remaining--;
-            localStorage.setItem(`${user}_timer_${bossName}`, Math.floor(Date.now() / 1000) + remaining);
+            
+            const h = String(Math.floor(remaining / 3600)).padStart(2, '0');
+            const m = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
+            const s = String(remaining % 60).padStart(2, '0');
+            timerEl.textContent = `${h}:${m}:${s}`;
         };
 
         update();
         const interval = setInterval(update, 1000);
         
         state.timers[user] = state.timers[user] || {};
-        state.timers[user][bossName] = { interval };
+        state.timers[user][bossName] = { interval, endTime: end };
+        
+        // Armazena o horário de término exato no localStorage
+        localStorage.setItem(`${user}_timer_${bossName}`, end);
     },
     
     clear: (user, bossName, btn, timerEl) => {
@@ -142,15 +185,18 @@ const Timer = {
     loadSavedTimers: (user) => {
         for (const group in BOSSES) {
             BOSSES[group].forEach(bossName => {
-                const savedTime = localStorage.getItem(`${user}_timer_${bossName}`);
-                if (savedTime) {
-                    const remaining = parseInt(savedTime, 10) - Math.floor(Date.now() / 1000);
+                const savedEndTime = localStorage.getItem(`${user}_timer_${bossName}`);
+                if (savedEndTime) {
+                    const endTime = parseInt(savedEndTime, 10);
+                    const now = Math.floor(Date.now() / 1000);
+                    const remaining = endTime - now;
+                    
                     if (remaining > 0) {
                         const bossCard = document.getElementById(`boss-${bossName}`);
                         if (bossCard) {
                             const btn = bossCard.querySelector('.boss-btn');
                             const timerEl = bossCard.querySelector('.boss-timer');
-                            Timer.start(user, bossName, timerEl, btn, remaining);
+                            Timer.start(user, bossName, timerEl, btn, endTime);
                         }
                     } else {
                         // Se o timer já expirou, limpe do localStorage
@@ -284,6 +330,43 @@ const Boss = {
         
         button.classList.add('active');
         Activity.resetTimer();
+        
+        // Mostra os filtros de nível apenas para o grupo solo
+        const levelFilters = document.getElementById('levelFilters');
+        if (group === 'solo') {
+            levelFilters.style.display = 'flex';
+            // Aplica o filtro atual
+            Boss.filterByLevel(state.currentLevelFilter);
+        } else {
+            levelFilters.style.display = 'none';
+        }
+    },
+    
+    filterByLevel: (level) => {
+        state.currentLevelFilter = level;
+        const soloGroup = document.getElementById('solo');
+        const allBossCards = soloGroup.querySelectorAll('.boss-card');
+        
+        allBossCards.forEach(card => {
+            const bossName = card.querySelector('.boss-btn').textContent;
+            const bossLevel = BOSS_LEVELS[bossName] || 0;
+            
+            if (level === 600) {
+                card.style.display = 'block'; // Mostra todos para 600+
+            } else if (bossLevel <= level) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Atualiza a classe active nos botões de nível
+        document.querySelectorAll('#levelFilters button').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.includes(level)) {
+                btn.classList.add('active');
+            }
+        });
     }
 };
 
@@ -353,6 +436,7 @@ window.showRotationSuggestion = (type = 'pt') => {
     Activity.resetTimer();
 };
 
+window.filterBossesByLevel = (level) => Boss.filterByLevel(level);
 window.resetAllTimers = () => Timer.clearAll(state.currentUser);
 window.logout = Auth.logout;
 window.showRegisterForm = () => {
