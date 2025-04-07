@@ -1,3 +1,4 @@
+<!-- index.html (mantido igual) -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
     <h1>Boss Tracker</h1>
-
+    
     <div id="loginScreen" class="login-screen">
         <h2>Login</h2>
         <form id="loginForm">
@@ -37,6 +38,13 @@
             <button id="dezBtn" onclick="toggleGroup('dez', this)">Boss de 10</button>
         </div>
 
+        <div class="menu" id="levelFilters" style="display: none;">
+            <button onclick="filterBossesByLevel(250)">LVL 250+</button>
+            <button onclick="filterBossesByLevel(350)">LVL 350+</button>
+            <button onclick="filterBossesByLevel(450)">LVL 450+</button>
+            <button onclick="filterBossesByLevel(600)">LVL 600+</button>
+        </div>
+
         <div class="menu">
             <button id="suggestionButtonPT" onclick="showRotationSuggestion('pt')">Sugestão de Rotação em PT</button>
             <button id="suggestionButtonSolo" onclick="showRotationSuggestion('solo')">Rotação Solo</button>
@@ -61,6 +69,16 @@
         <div id="resetAllButton">
             <button onclick="resetAllTimers()">Resetar Todos os Timers</button>
         </div>
+		
+		<div class="logo-container">
+			<div class="podium-wrapper">
+				<img src="imagens/bossPodium.png" alt="Boss Podium" class="podium-img">
+				<div class="gif-overlay">
+					<!-- GIF será inserido dinamicamente via JavaScript -->
+				</div>
+				<span class="podium-title">Boss Bostado</span> <!-- Alterado para span e na mesma linha -->
+			</div>
+		</div>
 
         <div id="logoutButton">
             <button onclick="logout()">Sair</button>
