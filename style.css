@@ -1,0 +1,226 @@
+body {
+    background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ff4747;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 0 0 8px #ff4747;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.menu button {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 2px solid #ff4747;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Novo estilo para o botão ativo */
+.menu button.active {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff4747;
+}
+
+.menu button:hover {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff4747;
+}
+
+.rotation-suggestion {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #fff;
+    border: 1px solid #ff4747;
+    display: none;
+    margin-bottom: 20px;
+}
+
+#groups {
+    margin-top: 10px;
+}
+
+.group {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.boss-card {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    border-radius: 12px;
+    padding: 15px;
+    width: 130px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boss-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px rgba(255, 71, 71, 0.6);
+}
+
+.boss-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.boss-btn.active {
+    background-color: green;
+    color: white;
+}
+
+.boss-btn:hover {
+    transform: scale(1.05);
+}
+
+.reset-btn {
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 6px;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.boss-timer {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: #0f0;
+    font-weight: bold;
+}
+
+.boss-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.login-screen {
+    text-align: center;
+    padding: 30px;
+}
+
+.login-screen input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.login-screen button {
+    background-color: #ff4747;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-screen button:hover {
+    background-color: #ff1f1f;
+}
+
+#logoutButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#logoutButton button {
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton button:hover {
+    background-color: #ff4747;
+}
+#resetAllButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#resetAllButton button {
+    background-color: #ff4747;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#resetAllButton button:hover {
+    background-color: #ff1f1f;
+}
+
+#suggestionButtonPT.active, 
+#suggestionButtonSolo.active {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff4747;
+}
+
+.rotation-suggestion p {
+    margin: 0;
+    padding: 0;
+}

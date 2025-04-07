@@ -1,0 +1,27 @@
+### Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+### Dependências
+node_modules/
+
+### Ambiente de desenvolvimento
+.env
+.env.local
+
+### Logs e debug
+*.log
+debug.log
+
+### Editor/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+### Arquivos temporários
+*.tmp
+*.temp
+
+### Backups
+*.bak

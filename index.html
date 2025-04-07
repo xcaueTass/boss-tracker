@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Boss Tracker</h1>
+
+    <div id="loginScreen" class="login-screen">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuário" required />
+            <input type="password" id="password" placeholder="Senha" required />
+            <button type="submit">Entrar</button>
+        </form>
+        <button onclick="showRegisterForm()">Cadastrar</button>
+    </div>
+
+    <div id="registerScreen" class="login-screen" style="display: none;">
+        <h2>Cadastrar Novo Usuário</h2>
+        <form id="registerForm">
+            <input type="text" id="registerUsername" placeholder="Usuário" required />
+            <input type="password" id="registerPassword" placeholder="Senha" required />
+            <button type="submit">Cadastrar</button>
+        </form>
+        <button onclick="hideRegisterForm()">Voltar para Login</button>
+    </div>
+
+    <div id="mainScreen" class="main-screen" style="display: none;">
+        <div class="menu">
+            <button id="soloBtn" onclick="toggleGroup('solo', this)">Boss Solo</button>
+            <button id="tresBtn" onclick="toggleGroup('tres', this)">Boss de 3</button>
+            <button id="cincoBtn" onclick="toggleGroup('cinco', this)">Boss de 5</button>
+            <button id="dezBtn" onclick="toggleGroup('dez', this)">Boss de 10</button>
+        </div>
+
+        <div class="menu">
+            <button id="suggestionButtonPT" onclick="showRotationSuggestion('pt')">Sugestão de Rotação em PT</button>
+            <button id="suggestionButtonSolo" onclick="showRotationSuggestion('solo')">Rotação Solo</button>
+        </div>
+
+        <div id="rotationSuggestion" class="rotation-suggestion" style="display: none;">
+            <p id="rotationTextPT" style="display: none;">
+                GD THAIS -> Faceles -> Cerebro -> Loyd -> GD Edron -> The Monster -> Magma -> Cult Edron -> Drume Oberon -> Oberon -> Timira -> Lulu -> GT -> Scarlet -> GD Darashia -> GD Carlin -> Zelos -> Mini DC -> Last Dream -> Leiden -> Boss Vengoth -> Last Vengoth
+            </p>
+            <p id="rotationTextSolo" style="display: none;">
+                Yselda -> Drume -> Cult Edron -> Miniboss edron (grave danger) -> Kusuma (marapur) -> Miniboss issavi -> Miniboss darashia -> Scarlet -> Alminha (Port Hope) -> Miniboss Asura -> Ahau -> Raxias -> tentugly -> cult carlin
+            </p>
+        </div>
+
+        <div id="groups">
+            <div class="group" id="solo"></div>
+            <div class="group" id="tres"></div>
+            <div class="group" id="cinco"></div>
+            <div class="group" id="dez"></div>
+        </div>
+
+        <div id="resetAllButton">
+            <button onclick="resetAllTimers()">Resetar Todos os Timers</button>
+        </div>
+
+        <div id="logoutButton">
+            <button onclick="logout()">Sair</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
