@@ -3,101 +3,103 @@ body {
     color: #f0f0f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 15px;
+    overflow-x: hidden;
 }
 
 h1 {
     text-align: center;
     color: #ff4747;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-shadow: 0 0 8px #ff4747;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 6px #ff4747;
 }
 
 .menu {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: 8px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
 .menu button {
     background: linear-gradient(145deg, #222, #111);
     color: #fff;
-    border: 2px solid #ff4747;
-    padding: 12px 20px;
+    border: 1px solid #ff4747;
+    padding: 8px 14px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: bold;
     transition: all 0.3s ease;
+    font-size: 0.8rem;
 }
 
-/* Novo estilo para o botão ativo */
 .menu button.active {
     background: #ff4747;
     color: #000;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #ff4747;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ff4747;
 }
 
 .menu button:hover {
     background: #ff4747;
     color: #000;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #ff4747;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ff4747;
 }
 
 .rotation-suggestion {
     text-align: center;
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 15px;
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
-    font-size: 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
     color: #fff;
     border: 1px solid #ff4747;
     display: none;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 #groups {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .group {
     display: none;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
 }
 
 .boss-card {
     background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-    border-radius: 12px;
-    padding: 15px;
-    width: 130px;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100px;
     text-align: center;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .boss-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 12px rgba(255, 71, 71, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 0 10px rgba(255, 71, 71, 0.6);
 }
 
 .boss-btn {
     background-color: red;
     color: white;
     border: none;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 6px;
     width: 100%;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    font-size: 0.7rem;
 }
 
 .boss-btn.active {
@@ -106,17 +108,17 @@ h1 {
 }
 
 .boss-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .reset-btn {
     background-color: #333;
     color: #ccc;
     border: 1px solid #555;
-    padding: 6px;
-    border-radius: 6px;
-    margin-top: 5px;
-    font-size: 0.8rem;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 4px;
+    font-size: 0.7rem;
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
@@ -128,8 +130,8 @@ h1 {
 }
 
 .boss-timer {
-    margin-top: 5px;
-    font-size: 1rem;
+    margin-top: 4px;
+    font-size: 0.8rem;
     color: #0f0;
     font-weight: bold;
 }
@@ -137,31 +139,33 @@ h1 {
 .boss-gif img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
 }
 
 .login-screen {
     text-align: center;
-    padding: 30px;
+    padding: 20px;
 }
 
 .login-screen input {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    width: 200px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 5px;
+    width: 160px;
+    font-size: 0.8rem;
 }
 
 .login-screen button {
     background-color: #ff4747;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 0.8rem;
 }
 
 .login-screen button:hover {
@@ -171,41 +175,44 @@ h1 {
 #logoutButton {
     display: flex;
     justify-content: flex-end;
-    margin-top: 20px;
+    margin-top: 15px;
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 8px;
+    right: 15px;
 }
 
 #logoutButton button {
     background-color: #444;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 0.8rem;
 }
 
 #logoutButton button:hover {
     background-color: #ff4747;
 }
+
 #resetAllButton {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 #resetAllButton button {
     background-color: #ff4747;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 0.8rem;
 }
 
 #resetAllButton button:hover {
@@ -216,53 +223,50 @@ h1 {
 #suggestionButtonSolo.active {
     background: #ff4747;
     color: #000;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #ff4747;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ff4747;
 }
 
 .rotation-suggestion p {
     margin: 0;
     padding: 0;
+    font-size: 0.8rem;
 }
 
-/* Estilos para o logo e podium */
 .logo-container {
     position: fixed;
-    top: 60px; /* Ajustado para ficar mais no topo */
-    left: 80px;
+    top: 50px;
+    left: 60px;
     z-index: 100;
-    width: 100px;
-    /* Garante que não será afetado pelo scroll */
+    width: 80px;
     transform: translateZ(0);
     will-change: transform;
-	margin: 0;
+    margin: 0;
     padding: 0;
-    pointer-events: none; /* Permite clicar através do elemento */
+    pointer-events: none;
 }
 
 .podium-wrapper {
     position: relative;
     width: 100%;
     height: auto;
-    /* Previne qualquer transformação indesejada */
     transform: none !important;
 }
 
 .podium-img {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 0 5px #ff4747);
-    display: block; /* Garante que a imagem se comporte como bloco */
-    /* Remove qualquer transformação */
+    filter: drop-shadow(0 0 4px #ff4747);
+    display: block;
     transform: none !important;
 }
 
 .gif-overlay {
     position: absolute;
-    top: -40%; /* Ajuste fino do posicionamento */
+    top: -40%;
     left: 41%;
     transform: translateX(-50%);
-    width: 90%; /* Tamanho relativo ao podium */
+    width: 90%;
     height: 90%;
     display: flex;
     justify-content: center;
@@ -275,40 +279,38 @@ h1 {
     height: 100%;
     object-fit: contain;
     border-radius: 50%;
-   /* border: 2px solid #ff4747;
-    background-color: rgba(0, 0, 0, 0.5);*/
 }
 
 .podium-title {
     color: #ff4747;
-    display: inline-block; /* Mantém na mesma linha */
-    font-size: 0.9rem; /* Tamanho menor */
-    text-shadow: 0 0 3px #ff4747;
+    display: inline-block;
+    font-size: 0.7rem;
+    text-shadow: 0 0 2px #ff4747;
     font-weight: bold;
     letter-spacing: 0.5px;
     position: absolute;
-    bottom: -20px; /* Posiciona abaixo do podium */
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap; /* Evita quebra de linha */
-	pointer-events: none;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 #levelFilters {
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: -15px;
+    margin-bottom: 15px;
 }
 
 #levelFilters button {
     background: linear-gradient(145deg, #222, #111);
     color: #fff;
-    border: 2px solid #4CAF50;
-    padding: 8px 15px;
+    border: 1px solid #4CAF50;
+    padding: 6px 12px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: bold;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 #levelFilters button:hover {
@@ -319,6 +321,12 @@ h1 {
 #levelFilters button.active {
     background: #4CAF50;
     color: #000;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #4CAF50;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #4CAF50;
+}
+
+/* Adicione esta nova regra para o main-screen */
+.main-screen {
+    position: relative;
+    padding-bottom: 60px; /* Adiciona espaço para o conteúdo não ficar escondido atrás do elemento fixo */
 }
