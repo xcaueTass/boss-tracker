@@ -416,23 +416,30 @@ window.showRotationSuggestion = (type = 'pt') => {
     const btnPT = document.getElementById('suggestionButtonPT');
     const btnSolo = document.getElementById('suggestionButtonSolo');
 
-    // Remove a classe active de ambos os botões inicialmente
-    btnPT.classList.remove('active');
-    btnSolo.classList.remove('active');
+    const isVisible = rotationDiv.style.display === 'block';
+    const isSameTypeVisible = (type === 'pt' && textPT.style.display === 'block') || (type === 'solo' && textSolo.style.display === 'block');
 
-    // Alterna a exibição do conteúdo
-    if (type === 'pt') {
-        textPT.style.display = 'block';
-        textSolo.style.display = 'none';
-        btnPT.classList.add('active');
-    } else {
+    // Se já está visível e clicou no mesmo botão, esconde tudo
+    if (isVisible && isSameTypeVisible) {
+        rotationDiv.style.display = 'none';
         textPT.style.display = 'none';
-        textSolo.style.display = 'block';
-        btnSolo.classList.add('active');
+        textSolo.style.display = 'none';
+        btnPT.classList.remove('active');
+        btnSolo.classList.remove('active');
+    } else {
+        rotationDiv.style.display = 'block';
+        if (type === 'pt') {
+            textPT.style.display = 'block';
+            textSolo.style.display = 'none';
+            btnPT.classList.add('active');
+            btnSolo.classList.remove('active');
+        } else {
+            textPT.style.display = 'none';
+            textSolo.style.display = 'block';
+            btnPT.classList.remove('active');
+            btnSolo.classList.add('active');
+        }
     }
-
-    // Mostra o container se estiver escondido
-    rotationDiv.style.display = 'block';
     Activity.resetTimer();
 };
 
