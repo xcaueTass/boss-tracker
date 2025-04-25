@@ -330,3 +330,46 @@ h1 {
     position: relative;
     padding-bottom: 60px; /* Adiciona espaço para o conteúdo não ficar escondido atrás do elemento fixo */
 }
+
+/* Adicione estas novas regras ao final do arquivo CSS */
+
+.hide-btn {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #777;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 4px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.hide-btn:hover {
+    background-color: #777;
+}
+
+#hideBossesButton {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #777;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+#hideBossesButton:hover {
+    background: #777;
+    color: #000;
+}
+
+#hideBossesButton.active {
+    background: #777;
+    color: #000;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #777;
+}
