@@ -1,0 +1,58 @@
+.main-header {
+    background: linear-gradient(180deg, #111, #222);
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(255, 71, 71, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 1px solid #ff4747;
+    background: linear-gradient(145deg, #222, #111);
+}
+
+.header-link:hover {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.logout-btn {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #ff4747;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.home-main {
+    text-align: center;
+    margin-top: 100px;
+    padding: 20px;
+    color: #fff;
+}
