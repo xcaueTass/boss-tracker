@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>Boss Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bestiario.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
+
 <body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="home.html" class="header-link">Home</a>
+            <a href="index.html" class="header-link">Boss Tracker</a>
+            <a href="bestiario.html" class="header-link">Bestiário Tracker</a>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </nav>
+    </header>
+
     <h1>Boss Tracker</h1>
 
     <div id="loginScreen" class="login-screen">
@@ -52,10 +65,14 @@
 
         <div id="rotationSuggestion" class="rotation-suggestion" style="display: none;">
             <p id="rotationTextPT" style="display: none;">
-                GD THAIS -> Faceles -> Cerebro -> Loyd -> GD Edron -> The Monster -> Magma -> Cult Edron -> Drume -> Oberon -> Timira -> Lulu -> GT -> Scarlet -> GD Darashia -> GD Carlin -> Zelos -> Mini DC -> Last Dream -> Leiden -> Boss Vengoth -> Last Vengoth
+                GD THAIS -> Faceles -> Cerebro -> Loyd -> GD Edron -> The Monster -> Magma -> Cult Edron -> Drume ->
+                Oberon -> Timira -> Lulu -> GT -> Scarlet -> GD Darashia -> GD Carlin -> Zelos -> Mini DC -> Last Dream
+                -> Leiden -> Boss Vengoth -> Last Vengoth
             </p>
             <p id="rotationTextSolo" style="display: none;">
-                Yselda -> Drume -> Cult Edron -> Miniboss edron (grave danger) -> Kusuma (marapur) -> Miniboss issavi -> Miniboss darashia -> Scarlet -> Alminha (Port Hope) -> Miniboss Asura -> Ahau -> Raxias -> tentugly -> cult carlin
+                Yselda -> Drume -> Cult Edron -> Miniboss edron (grave danger) -> Kusuma (marapur) -> Miniboss issavi ->
+                Miniboss darashia -> Scarlet -> Alminha (Port Hope) -> Miniboss Asura -> Ahau -> Raxias -> tentugly ->
+                cult carlin
             </p>
         </div>
 
@@ -70,19 +87,16 @@
             <button onclick="resetAllTimers()">Resetar Todos os Timers</button>
         </div>
 
-        <div class="logo-container">
+        <!-- <div class="logo-container">
             <div class="podium-wrapper">
                 <img src="imagens/bossPodium.png" alt="Boss Podium" class="podium-img">
                 <div class="gif-overlay"></div>
                 <span class="podium-title">Boss Bostado</span>
             </div>
-        </div>
-
-        <div id="logoutButton">
-            <button onclick="logout()">Sair</button>
-        </div>
+        </div> -->
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

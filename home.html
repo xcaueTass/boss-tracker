@@ -1,0 +1,37 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Home - Boss Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="home.html" class="header-link">Home</a>
+            <a href="index.html" class="header-link">Boss Tracker</a>
+            <a href="bestiario.html" class="header-link">Bestiário Tracker</a>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </nav>
+    </header>
+
+    <main class="home-main">
+        <h1>Bem-vindo ao Boss e Bestiário Tracker!</h1>
+        <p>Escolha uma opção no menu acima para começar.</p>
+    </main>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('currentUser');
+            window.location.href = 'home.html'; // volta pra home
+        }
+    </script>
+</body>
+
+</html>

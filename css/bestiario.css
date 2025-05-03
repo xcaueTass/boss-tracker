@@ -1,0 +1,256 @@
+/* bestiario.css */
+.bestiary-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.charm-points-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.charm-points-buttons button {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #ff4747;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.charm-points-buttons button.active,
+.charm-points-buttons button:hover {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ff4747;
+}
+
+.creatures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.creature-card {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.creature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 10px rgba(255, 71, 71, 0.6);
+}
+
+.creature-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.creature-info {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.creature-info p {
+    margin: 5px 0;
+}
+
+.creature-name {
+    font-weight: bold;
+    color: #ff4747;
+    margin-bottom: 8px;
+    text-shadow: 0 0 2px #ff4747;
+}
+
+.info-label {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Estilo para o botão do bestiário no header */
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.bestiary-btn {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #ff4747;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    margin: 0 10px;
+}
+
+.bestiary-btn:hover {
+    background: #ff4747;
+    color: #000;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ff4747;
+}
+
+/* Adicione ao final do bestiario.css */
+.map-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 71, 71, 0.5);
+}
+
+.map-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4747;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.map-frame {
+    width: 100%;
+    height: 500px;
+    border: 2px solid #ff4747;
+    border-radius: 8px;
+}
+
+.map-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.map-controls button {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #ff4747;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.map-controls button:hover {
+    background: #ff4747;
+    color: #000;
+}
+
+.location-link {
+    color: #4CAF50;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.location-link:hover {
+    color: #ff4747;
+}
+
+/* Adicione ao final do bestiario.css */
+.map-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 71, 71, 0.5);
+}
+
+.map-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4747;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.map-close:hover {
+    background-color: #e03a3a;
+}
+
+.map-frame {
+    width: 100%;
+    height: 500px;
+    /* Ajuste conforme necessário */
+    border: none;
+}
+
+.map-button {
+    background: linear-gradient(145deg, #222, #111);
+    color: #fff;
+    border: 1px solid #4CAF50;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+.map-button:hover {
+    background: #4CAF50;
+    color: #000;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #4CAF50;
+}
