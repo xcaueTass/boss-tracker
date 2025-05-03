@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Bestiário - Boss Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bestiario.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="home.html" class="header-link">Home</a>
+            <a href="index.html" class="header-link">Boss Tracker</a>
+            <a href="bestiario.html" class="header-link">Bestiário Tracker</a>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </nav>
+    </header>
+    <div id="mapModal" class="map-modal">
+        <div class="map-container">
+            <button class="map-close" onclick="closeMap()">X</button>
+            <iframe id="tibiaMap" class="map-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <h1>Bestiário Tibia</h1>
+
+    <div class="bestiary-container">
+        <div class="charm-points-buttons">
+            <button onclick="filterCreatures(1)">1 Ponto</button>
+            <button onclick="filterCreatures(5)">5 Pontos</button>
+            <button onclick="filterCreatures(15)">15 Pontos</button>
+            <button onclick="filterCreatures(25)">25 Pontos</button>
+            <button onclick="filterCreatures(50)">50 Pontos</button>
+            <button onclick="filterCreatures(100)">100 Pontos</button>
+            <button onclick="filterCreatures('special')">Especiais</button>
+        </div>
+
+        <div class="creatures-grid" id="creaturesContainer">
+        </div>
+    </div>
+
+    <script src="js/creatures.js"></script>
+    <script src="js/bestiario.js"></script>
+
+</body>
+</html>

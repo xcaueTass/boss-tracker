@@ -10,10 +10,10 @@ const BOSSES = {
     solo: [
         'Yselda', 'Drume', 'Cults Edron', 'Boss Edron', 'Kusuma (Marapur)', 'Cult Dara',
         'Bosses Darasha', 'Scarlet', 'Alminha (Port Hope)', 'Asura (Bosses)', 'Ahau',
-        'Raxias (Shortcut Port Hope)', 'MiniBoss Issavi', 'Tentugly', 'Cults Carlin',
+        'Raxias (Shortcut Port Hope)', 'MiniBoss Issavi', 'Tentugly', 'Brokul', 'Cults Carlin',
         'Cult Thais Mino', 'Cult Thais Mendigo'
     ],
-    tres: ['Oberon', 'Timira', 'Lulu', 'Leiden', 'Faceles', 'Cerebro', 'Mini DC', 'The Monster', 'WZ 9'],
+    tres: ['Oberon', 'Timira', 'Lulu', 'Leiden', 'Faceles', 'Cerebro', 'Mini DC', 'The Monster', 'WZ 9', 'Mitmah', 'Ratmiral', 'Despor'],
     cinco: ['GT', 'GD', 'Vengoth', 'Magma'],
     dez: ['Zelos', 'Last DC', 'Last Vengoth', 'WZ 123', 'WZ 456']
 };
@@ -22,6 +22,7 @@ const BOSSES = {
 const BOSS_LEVELS = {
     'Yselda': 350,
     'Drume': 250,
+    'Brokul': 450,
     'Cults Edron': 500,
     'Boss Edron': 250,
     'Kusuma (Marapur)': 250,
@@ -216,32 +217,32 @@ const Auth = {
     login: (username, password) => {
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const admin = { username: 'admin', password: 'mortadela1' };
-    
+
         if ((username === admin.username && password === admin.password) ||
             users.some(user => user.username === username && user.password === password)) {
-            
+
             localStorage.setItem('token', 'valid-token');
             localStorage.setItem('currentUser', username);
             state.currentUser = username;
-            
+
             // Carrega os bosses escondidos
             const savedHiddenBosses = localStorage.getItem('hiddenBosses');
             state.hiddenBosses = savedHiddenBosses ? JSON.parse(savedHiddenBosses) : {};
             state.showHiddenBosses = false; // Inicia com os escondidos ocultos
-            
+
             // Atualiza o botão principal
             const hideButton = document.getElementById('hideBossesButton');
             if (hideButton) {
                 hideButton.textContent = 'Esconder Bosses';
                 hideButton.classList.remove('active');
             }
-            
+
             DOM.hideElement('loginScreen');
             DOM.showElement('mainScreen');
-            
+
             Boss.createAll(username);
             Timer.loadSavedTimers(username);
-            
+
             Activity.startMonitoring();
             return true;
         }
@@ -376,11 +377,22 @@ const Boss = {
         const levelFilters = document.getElementById('levelFilters');
         if (group === 'solo') {
             levelFilters.style.display = 'flex';
-            // Aplica o filtro atual
             Boss.filterByLevel(state.currentLevelFilter);
         } else {
             levelFilters.style.display = 'none';
         }
+
+        // NOVO: Corrige os bosses escondidos ao trocar de grupo
+        document.querySelectorAll(`#${group} .boss-card`).forEach(card => {
+            const bossName = card.querySelector('.boss-btn').textContent;
+            const isHidden = state.hiddenBosses[state.currentUser]?.[bossName];
+
+            if (isHidden && !state.showHiddenBosses) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'block';
+            }
+        });
     },
 
     filterByLevel: (level) => {
@@ -484,6 +496,19 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.hideElement('loginScreen');
         DOM.showElement('mainScreen');
         Boss.createAll(state.currentUser);
+
+        // Ajustar bosses escondidos logo ao criar
+        document.querySelectorAll('.boss-card').forEach(card => {
+            const bossName = card.querySelector('.boss-btn').textContent;
+            const isHidden = state.hiddenBosses[state.currentUser]?.[bossName];
+
+            if (isHidden && !state.showHiddenBosses) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'block';
+            }
+        });
+
         Timer.loadSavedTimers(state.currentUser);
         Activity.startMonitoring();
     }
